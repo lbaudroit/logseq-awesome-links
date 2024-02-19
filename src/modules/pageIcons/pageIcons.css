@@ -32,6 +32,13 @@
     margin-right: 0;
 }
 
+.awLi-icon.awLi-imageIcon {
+    height: auto;
+    width: auto;
+    max-height: 1em;
+    max-width: 1em;
+}
+
 /* color */
 .awLi-color:is(
     .page-ref,

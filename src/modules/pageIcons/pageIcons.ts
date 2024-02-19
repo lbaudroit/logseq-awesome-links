@@ -133,7 +133,10 @@ const setIconToLinkItem = async (linkItem: HTMLElement, pageProps: propsObject, 
         const oldPageIcon = linkItem.querySelector('.awLi-icon');
         oldPageIcon && oldPageIcon.remove();
         hideTitle(linkItem, pageProps);
-        linkItem.insertAdjacentHTML('afterbegin', `<span class="awLi-icon" data-is-emoji="${isEmoji(pageIcon)}">${pageIcon}</span>`);
+        const insertedHTML = isURL(pageIcon) ?
+            `<img src="${pageIcon}" class="awLi-icon awLi-imageIcon" alt="Icon">` :
+            `<span class="awLi-icon" data-is-emoji="${isEmoji(pageIcon)}">${pageIcon}</span>`
+            linkItem.insertAdjacentHTML('afterbegin', insertedHTML);
     }
 }
 
@@ -215,6 +218,15 @@ const removeStyleFromLinkList = (linkList: Element[]) => {
         }
     }
 }
+
+const isURL = (str:string): boolean => {
+    try {
+        new URL(str);
+        return true;
+    } catch (TypeError) {
+        return false;
+    }
+};
 
 const setTabsCSS = () => {
     injectPluginCSS('logseq-tabs_iframe', 'awLi-tabs-styles', tabsIframeStyles);
