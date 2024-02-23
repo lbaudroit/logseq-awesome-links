@@ -133,10 +133,11 @@ const setIconToLinkItem = async (linkItem: HTMLElement, pageProps: propsObject, 
         const oldPageIcon = linkItem.querySelector('.awLi-icon');
         oldPageIcon && oldPageIcon.remove();
         hideTitle(linkItem, pageProps);
-        const insertedHTML = isURL(pageIcon) ?
-            `<img src="${pageIcon}" class="awLi-icon awLi-imageIcon" alt="Icon">` :
-            `<span class="awLi-icon" data-is-emoji="${isEmoji(pageIcon)}">${pageIcon}</span>`
-            linkItem.insertAdjacentHTML('afterbegin', insertedHTML);
+        const content = isURL(pageIcon) ?
+            `<img src="${pageIcon}" class="awLi-imageIcon" alt="Icon">` :
+            pageIcon;
+        const insertedHTML = `<span class="awLi-icon" data-is-emoji="${isEmoji(pageIcon)}">${content}</span>`;
+        linkItem.insertAdjacentHTML('afterbegin', insertedHTML);
     }
 }
 

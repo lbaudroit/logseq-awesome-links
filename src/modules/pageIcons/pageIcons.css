@@ -5,7 +5,7 @@
 .awLi-icon {
     position: relative;
     top: 2px;
-    display: inline-block;
+    display: inline-flex;
     margin-right: 5px;
     width: 16px;
     height: 16px;
@@ -32,9 +32,9 @@
     margin-right: 0;
 }
 
-.awLi-icon.awLi-imageIcon {
-    height: auto;
-    width: auto;
+.awLi-icon .awLi-imageIcon {
+    display: block;
+    margin: auto;
     max-height: 1em;
     max-width: 1em;
 }
